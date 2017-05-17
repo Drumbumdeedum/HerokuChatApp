@@ -1,0 +1,81 @@
+package com.greenfox.chatapp.model;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class LogEntry {
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private long id;
+  private String date = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss.SSS", Locale.ENGLISH).format(new Date());
+  private String path, method, logLevel, parameters;
+
+  public LogEntry() {
+  }
+
+  public LogEntry(String logLevel, String path, String method, String parameters) {
+    this.path = path;
+    this.method = method;
+    this.logLevel = logLevel;
+    this.parameters = parameters;
+  }
+
+  public String getPath() {
+    return path;
+  }
+
+  public void setPath(String path) {
+    this.path = path;
+  }
+
+  public String getMethod() {
+    return method;
+  }
+
+  public void setMethod(String method) {
+    this.method = method;
+  }
+
+  public String getDate() {
+    return date;
+  }
+
+  public void setDate(String date) {
+    this.date = date;
+  }
+
+  public String getLogLevel() {
+    return logLevel;
+  }
+
+  public void setLogLevel(String logLevel) {
+    this.logLevel = logLevel;
+  }
+
+  public String getParameters() {
+    return parameters;
+  }
+
+  public void setParameters(String parameters) {
+    this.parameters = parameters;
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  @Override
+  public String toString() {
+   return date + " " + logLevel + " " + path + " " + method + " " + parameters;
+  }
+}
