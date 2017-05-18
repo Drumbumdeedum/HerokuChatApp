@@ -10,9 +10,9 @@
 
   <body>
     <h1>Peer To Peer Chat program</h1>
-    <form action="/" th:each="user : ${userrepo}">Your username:
-      <input type="search" th:value="${user.getName()}"/>
-      <input type="submit" value="Update"/>
+    <form action="/createUser">USER:
+      <input type="search" th:value="${mainuser.getName()}"/>
+      <input type="submit" value="Change"/>
     </form>
 
   </body>

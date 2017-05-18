@@ -1,14 +1,12 @@
 package com.greenfox.chatapp.controller;
 
-import com.greenfox.chatapp.model.ChatUser;
 import com.greenfox.chatapp.model.LogEntry;
+import com.greenfox.chatapp.model.MainUser;
 import com.greenfox.chatapp.repository.LogRepository;
-import com.greenfox.chatapp.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ChatController {
@@ -21,29 +19,30 @@ public class ChatController {
   LogRepository logRepository;
 
   @Autowired
-  UserRepo tempUserRepository;
+  MainUser mainUser;
 
   @RequestMapping("/index")
-  public String index(@RequestParam(value = "parameters", defaultValue = "no_parameters") String params, Model model) {
-    logRepository.save(new LogEntry(CHAT_APP_LOGLEVEL, "/", "GET", params));
-    model.addAttribute("userrepo", tempUserRepository.findAll());
+  public String index(Model model) {
+    logRepository.save(new LogEntry(CHAT_APP_LOGLEVEL, "/", "GET", "no_parameters"));
     System.out.println(logRepository.getFirstByOrderByIdDesc());
-    if(tempUserRepository.findOne(1l) == null) {
-      return "redirect:/enter";
+
+    if(mainUser.getName() == null) {
+      return "redirect:/enter/";
     } else {
+      model.addAttribute("mainuser", mainUser);
       return "index";
     }
   }
 
   @RequestMapping("/enter")
   public String enterNewUser(Model model) {
-    model.addAttribute("repo", tempUserRepository.findAll());
+    model.addAttribute("mainuser", mainUser);
     return "enter";
   }
 
   @RequestMapping("/createUser")
   public String addNewUser(String newUser) {
-    tempUserRepository.save(new ChatUser(newUser));
+    mainUser.setName(newUser);
     return "redirect:/index/";
   }
 }

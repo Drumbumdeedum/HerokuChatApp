@@ -9,15 +9,11 @@
   </head>
 
   <body>
-    <h1>Enter</h1>
-    <form action="/createUser">Choose your name:
+    <h1>User Settings</h1>
+    <form action="/createUser">Enter username:
       <input type="search" name="newUser"/>
       <input type="submit" value="Enter"/>
     </form>
-
-    <ul th:each="entry : ${repo}">
-      <li th:text="${entry.getName()}"/>
-    </ul>
 
   </body>
 
