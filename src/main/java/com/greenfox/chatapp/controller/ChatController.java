@@ -3,6 +3,7 @@ package com.greenfox.chatapp.controller;
 import com.greenfox.chatapp.model.LogEntry;
 import com.greenfox.chatapp.model.MainUser;
 import com.greenfox.chatapp.repository.LogRepository;
+import com.greenfox.chatapp.repository.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,9 @@ public class ChatController {
 
   @Autowired
   MainUser mainUser;
+
+  @Autowired
+  MessageRepo messageRepo;
 
   @RequestMapping("/index")
   public String index(Model model) {
