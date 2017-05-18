@@ -12,6 +12,9 @@ public class ChatMessage {
   private long id;
   private String userName, messageText;
 
+  public ChatMessage() {
+  }
+
   public ChatMessage(String userName, String messageText) {
     this.userName = userName;
     this.messageText = messageText;

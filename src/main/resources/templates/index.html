@@ -15,7 +15,14 @@
       <input type="submit" value="Change"/>
     </form>
 
-    <form action="/sendmessage">
+    <ul th:each="message : ${messages}">
+      <li>
+        <div th:text="${message.getUserName()}"/>
+        <div th:text="${message.getMessageText()}"/>
+      </li>
+    </ul>
+
+    <form action="/sendmessage" method="post">
       <div>
       <textarea type="text" name="message" rows="2" cols="40"/>
       </div>
@@ -23,6 +30,5 @@
       <input type="submit" value="Send message"/>
       </div>
     </form>
-
   </body>
 </html>
