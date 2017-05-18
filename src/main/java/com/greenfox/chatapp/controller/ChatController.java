@@ -25,6 +25,11 @@ public class ChatController {
   @Autowired
   MessageRepo messageRepo;
 
+  @RequestMapping("/")
+  public String redirectToIndex() {
+    return "redirect:/index/";
+  }
+
   @RequestMapping("/index")
   public String index(Model model) {
     logRepository.save(new LogEntry(CHAT_APP_LOGLEVEL, "/", "GET", "no_parameters"));
