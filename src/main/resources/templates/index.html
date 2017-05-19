@@ -17,8 +17,8 @@
 
     <ul th:each="message : ${messages}">
       <li>
-        <div th:text="${message.getUserName()}"/>
-        <div th:text="${message.getMessageText()}"/>
+        <div th:text="${message.getMessage()}"/>
+        <div th:text="'sent by: ' + ${message.getUsername()} + ' at ' + ${message.getTimestamp()}"/>
       </li>
     </ul>
 

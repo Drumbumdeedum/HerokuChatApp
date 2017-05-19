@@ -8,10 +8,7 @@ import com.greenfox.chatapp.repository.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ChatController {
@@ -45,6 +42,14 @@ public class ChatController {
       buffer++;
     }
 
+    if (buffer == 2) {
+      messageRepo.save(new ChatMessage("App", "Why are you talking to yourself?"));
+    }
+
+    if (buffer == 3) {
+      messageRepo.save(new ChatMessage("App", "I might be rude, but at least I'm not talking to myself...or am I?"));
+    }
+
     if(mainUser.getName() == null) {
       return "redirect:/enter/";
     } else {
@@ -69,6 +74,7 @@ public class ChatController {
   @RequestMapping("/sendmessage")
   public String sendMessage(String message) {
     messageRepo.save(new ChatMessage(mainUser.getName(), message));
+    buffer++;
     return "redirect:/index";
   }
 }
