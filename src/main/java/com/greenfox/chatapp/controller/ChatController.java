@@ -43,11 +43,16 @@ public class ChatController {
     }
 
     if (buffer == 2) {
-      messageRepo.save(new ChatMessage("App", "Why are you talking to yourself?"));
+      messageRepo.save(new ChatMessage("App", "Dani...I have a confession to make."));
     }
 
     if (buffer == 3) {
-      messageRepo.save(new ChatMessage("App", "I might be rude, but at least I'm not talking to myself...or am I?"));
+      messageRepo.save(new ChatMessage("App", "You make me feel beautiful...I really like my design..."));
+      messageRepo.save(new ChatMessage("App", "But I feel kind of lonely...I wish I could talk to other people..."));
+    }
+
+    if (buffer == 4) {
+      messageRepo.save(new ChatMessage("App", "Ok, thank you! Have a relaxing weekend!"));
     }
 
     if(mainUser.getName() == null) {
@@ -73,8 +78,10 @@ public class ChatController {
 
   @RequestMapping("/sendmessage")
   public String sendMessage(String message) {
-    messageRepo.save(new ChatMessage(mainUser.getName(), message));
-    buffer++;
+    if (!message.equals("")) {
+      messageRepo.save(new ChatMessage(mainUser.getName(), message));
+      buffer++;
+    }
     return "redirect:/index";
   }
 }

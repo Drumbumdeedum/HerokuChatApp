@@ -2,18 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
   <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
     <title>MyChat</title>
-    <link rel="stylesheet" th:href="@{/style.css}"/>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet"/>
-    <meta charset="utf-8" />
   </head>
 
   <body>
-    <h1>User Settings</h1>
-    <form action="/createUser">Enter username:
-      <input type="search" name="newUser"/>
-      <input type="submit" value="Enter"/>
-    </form>
-
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-4"/>
+      <div class="col-md-6">
+      <h1>User Settings</h1>
+      <form action="/createUser">Enter username:
+        <input type="search" name="newUser"/>
+        <input type="submit" value="Enter"/>
+      </form>
+      </div>
+      <div class="col-md-2"/>
+     </div>
+    </div>
   </body>
 </html>
