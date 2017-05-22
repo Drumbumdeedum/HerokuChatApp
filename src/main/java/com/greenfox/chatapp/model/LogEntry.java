@@ -1,12 +1,8 @@
 package com.greenfox.chatapp.model;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.*;
+import javax.persistence.*;
 
 @Entity
 public class LogEntry {

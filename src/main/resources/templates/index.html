@@ -9,35 +9,20 @@
   </head>
 
   <body>
-
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <div class="col-md-3" style="background-color: aliceblue"/>
         <div class="col-md-6">
           <p>
             <h1>Peer To Peer Chat program</h1>
-
             <form action="/createUser">USER:
               <input type="search" th:value="${mainuser.getName()}"/>
               <input type="submit" value="Change"/>
             </form>
           </p>
-
           <p>
             <div class="panel panel-primary">
               <div style="background-color: cornflowerblue; font-size: 30px; color: white; padding: 5px" class="panel heading">Messages</div>
-
-              <div th:each="message : ${messages}">
-
-                <div style="background-color: lightblue; margin: 5px; padding: 5px; border-radius: 10px" class="panel-body">
-                  <div style="font-size: 16px" th:text="${message.getMessage()}"/>
-                  <span style="color: white"> sent by:</span>
-                  <span style="color: white" th:text="${message.getUsername()}"/>
-                  <span style="color: white" th:text="' at ' + ${message.getTimestamp()}"/>
-                </div>
-
-              </div>
-
               <p>
                 <form action="/sendmessage" style="margin: 5px" method="post">
                   <div>
@@ -50,13 +35,19 @@
                   </div>
                 </form>
               </p>
+              <div th:each="message : ${messages}">
+                <div style="background-color: lightblue; margin: 5px; padding: 5px; border-radius: 10px" class="panel-body">
+                  <div style="font-size: 16px" th:text="${message.getMessage()}"/>
+                  <span style="color: white"> sent by:</span>
+                  <span style="color: white" th:text="${message.getUsername()}"/>
+                  <span style="color: white" th:text="' at ' + ${message.getTimestamp()}"/>
+                </div>
+              </div>
             </div>
           </p>
         </div>
-
         <div class="col-md-3" style="background-color: aliceblue"/>
       </div>
     </div>
-
   </body>
 </html>

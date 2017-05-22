@@ -1,28 +1,24 @@
 package com.greenfox.chatapp.model;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.sql.Timestamp;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class ChatMessage {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
   private String username, message;
-  private String timestamp = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss.SSS", Locale.ENGLISH).format(new Date());
-
+  private Timestamp timestamp;
 
   public ChatMessage() {
   }
 
   public ChatMessage(String userName, String messageText) {
+    this.id = (long)(Math.random()* 8999999 + 1000000);
     this.username = userName;
     this.message = messageText;
+    this.timestamp = new Timestamp(System.currentTimeMillis());
   }
 
   public long getId(){
@@ -49,11 +45,11 @@ public class ChatMessage {
     this.id = id;
   }
 
-  public String getTimestamp() {
+  public Timestamp getTimestamp() {
     return timestamp;
   }
 
-  public void setTimestamp(String timestamp) {
+  public void setTimestamp(Timestamp timestamp) {
     this.timestamp = timestamp;
   }
 }
