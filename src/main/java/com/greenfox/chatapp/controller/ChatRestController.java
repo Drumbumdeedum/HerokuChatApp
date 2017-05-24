@@ -22,7 +22,9 @@ public class ChatRestController {
   @PostMapping("/api/message/receive")
   public StatusOK receiveMessage(@RequestBody ReceivedMessage receivedMessage) {
     messageRepo.save(receivedMessage.getMessage());
-    restTemplate.postForObject(ChatAppSettings.getChatAppPeerAddresss(), receivedMessage.getMessage(), StatusOK.class);
+/*
+    StatusOK statusOKTemp = restTemplate.postForObject(ChatAppSettings.getChatAppPeerAddresss(), receivedMessage, StatusOK.class);
+*/
     return new StatusOK();
   }
 }

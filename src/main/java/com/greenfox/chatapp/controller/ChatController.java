@@ -64,7 +64,7 @@ public class ChatController {
       messageRepo.save(new Message(mainUser.getName(), messageText));
       receivedMessage.setMessage(new Message(mainUser.getName(), messageText));
       receivedMessage.setClient(new Client(ChatAppSettings.getChatAppPeerAddresss()));
-      StatusOK statusOK  = restTemplate.postForObject(ChatAppSettings.getChatAppPeerAddresss(), receivedMessage, StatusOK.class);
+      StatusOK statusOK = restTemplate.postForObject(ChatAppSettings.getChatAppPeerAddresss(), receivedMessage, StatusOK.class);
     }
     return "redirect:/index";
   }
