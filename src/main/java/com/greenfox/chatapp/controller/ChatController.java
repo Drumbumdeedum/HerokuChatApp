@@ -15,9 +15,6 @@ public class ChatController {
   private int buffer = 0;
 
   @Autowired
-  LogRepository logRepository;
-
-  @Autowired
   MainUser mainUser;
 
   @Autowired
@@ -35,9 +32,6 @@ public class ChatController {
 
   @RequestMapping("/index")
   public String index(Model model) {
-    logRepository.save(new LogEntry(ChatAppSettings.getChatAppLoglevel(), "/", "GET", "no_parameters"));
-    System.out.println(logRepository.getFirstByOrderByIdDesc());
-
     if (buffer == 0) {
       messageRepo.save(new Message("App", "Hi there! Submit your message using the send message button!"));
       buffer++;
