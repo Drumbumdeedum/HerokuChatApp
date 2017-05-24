@@ -21,7 +21,7 @@ public class ChatController {
   ChatMessageRepo messageRepo;
 
   @Autowired
-  ReceivedMessage receivedMessage;
+  ReceivedMessage sendMessage;
 
   RestTemplate restTemplate = new RestTemplate();
 
@@ -62,9 +62,9 @@ public class ChatController {
   public String sendMessage(@RequestParam("text") String messageText) {
     if (!messageText.isEmpty()) {
       messageRepo.save(new Message(mainUser.getName(), messageText));
-      receivedMessage.setMessage(new Message(mainUser.getName(), messageText));
-      receivedMessage.setClient(new Client(ChatAppSettings.getChatAppPeerAddresss()));
-      /* StatusOK statusOK = restTemplate.postForObject(ChatAppSettings.getChatAppPeerAddresss(), receivedMessage, StatusOK.class);*/
+      sendMessage.setMessage(new Message(mainUser.getName(), messageText));
+      sendMessage.setClient(new Client(ChatAppSettings.getChatAppPeerAddresss()));
+      StatusOK statusOK = restTemplate.postForObject(ChatAppSettings.getChatAppPeerAddresss(), sendMessage, StatusOK.class);
     }
     return "redirect:/index";
   }
