@@ -1,8 +1,5 @@
 package com.greenfox.chatapp.model;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class Client {
   private String id;
 
