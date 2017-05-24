@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
   <head>
+    <meta http-equiv="refresh" content="10"/>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
@@ -11,8 +12,9 @@
   <body>
     <nav class="navbar navbar-default">
       <div class="navbar-header">
-        <div class="navbar-text">P2P ChatApp</div>
-        <div class="navbar-text"> :: :: :: </div>
+        <div class="navbar-text" style="font-weight: bold"> :: :: :: </div>
+        <div class="navbar-text" style="font-weight: bold">P2P ChatApp</div>
+        <div class="navbar-text" style="font-weight: bold"> :: :: :: </div>
         <div class="navbar-text" th:text="'Hello ' + ${mainuser.getName()} +'!'"/>
         <form class="navbar-form navbar-left" action="/createUser">
             <button type="submit" class="btn btn-primary">Change user</button>
