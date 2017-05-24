@@ -18,10 +18,8 @@ public class ChatRestController {
   @CrossOrigin("*")
   @PostMapping("/api/message/receive")
   public StatusOK receiveMessage(@RequestBody ReceivedMessage receivedMessage) {
-    if (!receivedMessage.getMessage().getUsername().equals("Dani")) {
-      messageRepo.save(receivedMessage.getMessage());
-      StatusOK statusOKTemp = restTemplate.postForObject(ChatAppSettings.getChatAppPeerAddresss(), receivedMessage, StatusOK.class);
-    }
+    messageRepo.save(receivedMessage.getMessage());
+    StatusOK statusOKTemp = restTemplate.postForObject(ChatAppSettings.getChatAppPeerAddresss(), receivedMessage, StatusOK.class);
     return new StatusOK();
   }
 }
