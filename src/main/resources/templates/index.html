@@ -11,14 +11,12 @@
 
   <body>
     <nav class="navbar navbar-default">
-      <div class="navbar-header">
-        <div class="navbar-text" style="font-weight: bold"> :: :: :: </div>
-        <div class="navbar-text" style="font-weight: bold">P2P ChatApp</div>
-        <div class="navbar-text" style="font-weight: bold"> :: :: :: </div>
-        <div class="navbar-text" th:text="'Hello ' + ${mainuser.getName()} +'!'"/>
-        <form class="navbar-form navbar-left" action="/createUser">
+      <div class="container-fluid">
+        <span class="navbar-text" style="font-weight: bold"> :: :: :: P2P ChatApp :: :: :: </span>
+        <form class="navbar-form navbar-right" action="/createUser">
             <button type="submit" class="btn btn-primary">Change user</button>
         </form>
+        <span class="navbar-text navbar-right" style="font-weight: bold" th:text="'Hello ' + ${mainuser.getName()} +'!'"/>
       </div>
     </nav>
 
