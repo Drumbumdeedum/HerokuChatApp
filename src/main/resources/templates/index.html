@@ -9,44 +9,45 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-default">
+      <div class="navbar-header">
+        <div class="navbar-text">P2P ChatApp</div>
+        <div class="navbar-text"> :: :: :: </div>
+        <div class="navbar-text" th:text="'Hello ' + ${mainuser.getName()} +'!'"/>
+        <form class="navbar-form navbar-left" action="/createUser">
+            <button type="submit" class="btn btn-primary">Change user</button>
+        </form>
+      </div>
+    </nav>
+
     <div class="container">
-      <div class="row">
-        <div class="col-md-3" style="background-color: aliceblue"/>
-        <div class="col-md-6">
-          <p>
-            <h1>Peer To Peer Chat program</h1>
-            <form action="/createUser">USER:
-              <input type="search" th:value="${mainuser.getName()}"/>
-              <input type="submit" value="Change"/>
-            </form>
-          </p>
-          <p>
-            <div class="panel panel-primary">
-              <div style="background-color: cornflowerblue; font-size: 30px; color: white; padding: 5px" class="panel heading">Messages</div>
-              <p>
-                <form action="/sendmessage" style="margin: 5px" method="post">
-                  <div>
-                  <textarea style="width: 100%" type="text" name="message" rows="3"/>
-                  </div>
-                  <div>
-                    <button class="btn btn-primary" type="button">
-                      <input style="border: none; background-color: inherit; width: 100%; height: 100%" type="submit" value="Send message"/>
-                    </button>
-                  </div>
-                </form>
-              </p>
-              <div th:each="message : ${messages}">
-                <div style="background-color: lightblue; margin: 5px; padding: 5px; border-radius: 10px" class="panel-body">
-                  <div style="font-size: 16px" th:text="${message.getMessage()}"/>
-                  <span style="color: white"> sent by:</span>
-                  <span style="color: white" th:text="${message.getUsername()}"/>
-                  <span style="color: white" th:text="' at ' + ${message.getTimestamp()}"/>
-                </div>
-              </div>
+      <div class="col-md-5">
+        <div class="panel panel-primary">
+          <div style="background-color: cornflowerblue; font-size: 30px; color: white; padding: 5px" class="panel heading">Enter message:</div>
+          <form action="/sendmessage" style="margin: 5px" method="post">
+            <div>
+              <textarea style="width: 100%" type="text" name="message" rows="3"/>
             </div>
-          </p>
+            <div>
+              <button class="btn btn-primary" type="button">
+                <input style="border: none; background-color: inherit; width: 100%; height: 100%" type="submit" value="Send"/>
+              </button>
+            </div>
+          </form>
         </div>
-        <div class="col-md-3" style="background-color: aliceblue"/>
+      </div>
+      <div class="col-md-7">
+        <div class="panel panel-primary">
+          <div style="background-color: cornflowerblue; font-size: 30px; color: white; padding: 5px" class="panel heading">Messages</div>
+          <div th:each="message : ${messages}">
+            <div style="background-color: lightblue; margin: 5px; padding: 5px; border-radius: 10px" class="panel-body">
+              <div style="font-size: 16px" th:text="${message.getMessage()}"/>
+              <span style="color: white"> sent by:</span>
+              <span style="color: white" th:text="${message.getUsername()}"/>
+              <span style="color: white" th:text="' at ' + ${message.getTimestamp()}"/>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

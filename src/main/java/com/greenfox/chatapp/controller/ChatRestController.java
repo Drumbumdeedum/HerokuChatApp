@@ -13,8 +13,8 @@ public class ChatRestController {
 
   @CrossOrigin("*")
   @PostMapping("/api/message/receive")
-  public Status receiveMessage(@RequestBody ReceivedMessage receivedMessage) {
+  public StatusOK receiveMessage(@RequestBody ReceivedMessage receivedMessage) {
     messageRepo.save(receivedMessage.getIncomingMessage());
-    return new Status();
+    return new StatusOK();
   }
 }

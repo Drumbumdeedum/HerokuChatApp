@@ -1,5 +1,6 @@
 package com.greenfox.chatapp.controller;
 
+import com.greenfox.chatapp.ChatAppSettings;
 import com.greenfox.chatapp.model.*;
 import com.greenfox.chatapp.repository.*;
 import org.springframework.web.bind.annotation.*;
@@ -10,9 +11,6 @@ import org.springframework.ui.Model;
 @Controller
 public class ChatController {
 
-  private static final String CHAT_APP_LOGLEVEL = "INFO";
-  private static final String CHAT_APP_UNIQUE_ID = "Drumbumdeedum";
-  private static final String CHAT_APP_PEER_ADDRESS = "";
   private int buffer = 0;
 
   @Autowired
@@ -31,7 +29,7 @@ public class ChatController {
 
   @RequestMapping("/index")
   public String index(Model model) {
-    logRepository.save(new LogEntry(CHAT_APP_LOGLEVEL, "/", "GET", "no_parameters"));
+    logRepository.save(new LogEntry(ChatAppSettings.getChatAppLoglevel(), "/", "GET", "no_parameters"));
     System.out.println(logRepository.getFirstByOrderByIdDesc());
 
     if (buffer == 0) {
@@ -39,7 +37,7 @@ public class ChatController {
       buffer++;
     }
 
-    if(mainUser.getName() == null) {
+    if(mainUser.getName() == null || mainUser.getName().equals("")) {
       return "redirect:/enter/";
     } else {
       model.addAttribute("mainuser", mainUser);

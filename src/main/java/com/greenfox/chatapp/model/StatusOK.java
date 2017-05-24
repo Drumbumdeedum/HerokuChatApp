@@ -1,12 +1,12 @@
 package com.greenfox.chatapp.model;
 
-public class Status {
-  String status;
+public class StatusOK {
+  private String status = "ok";
 
-  public Status() {
+  public StatusOK() {
   }
 
-  public Status(String status) {
+  public StatusOK(String status) {
     this.status = status;
   }
 

@@ -1,6 +1,7 @@
 package com.greenfox.chatapp.model;
 
 import java.sql.Timestamp;
+import java.util.Random;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -15,10 +16,14 @@ public class ChatMessage {
   }
 
   public ChatMessage(String userName, String messageText) {
-    this.id = (long)(Math.random()* 8999999 + 1000000);
+    this.id = generateID();
     this.username = userName;
     this.message = messageText;
     this.timestamp = new Timestamp(System.currentTimeMillis());
+  }
+
+  public long generateID() {
+    return (long)(Math.random()* 8999999) + 1000000;
   }
 
   public long getId(){
