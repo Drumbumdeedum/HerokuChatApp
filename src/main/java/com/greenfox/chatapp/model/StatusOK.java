@@ -1,5 +1,8 @@
 package com.greenfox.chatapp.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class StatusOK {
   private String status = "ok";
 

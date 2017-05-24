@@ -11,6 +11,9 @@ public class ChatRestController {
   @Autowired
   ChatMessageRepo messageRepo;
 
+  @Autowired
+  StatusOK statusOK;
+
   @CrossOrigin("*")
   @PostMapping("/api/message/receive")
   public StatusOK receiveMessage(@RequestBody ReceivedMessage receivedMessage) {
