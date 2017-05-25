@@ -29,11 +29,13 @@ public class ChatController {
 
   @RequestMapping("/")
   public String redirectToIndex() {
+    System.out.println(new LogEntry(ChatAppSettings.getChatAppLoglevel(), "/", "GET", "no_parameters"));
     return "redirect:/index/";
   }
 
   @RequestMapping("/index")
   public String index(Model model) {
+    System.out.println(new LogEntry(ChatAppSettings.getChatAppLoglevel(), "/index", "GET", "no_parameters"));
     if (buffer == 0) {
       messageRepo.save(new Message("App", "Hi there! Submit your message using the send message button!"));
       buffer++;
@@ -50,12 +52,14 @@ public class ChatController {
 
   @RequestMapping("/enter")
   public String enterNewUser(Model model) {
+    System.out.println(new LogEntry(ChatAppSettings.getChatAppLoglevel(), "/enter", "GET", "no_parameters"));
     model.addAttribute("mainuser", mainUser);
     return "enter";
   }
 
   @RequestMapping("/createUser")
   public String addNewUser(String newUser) {
+    System.out.println(new LogEntry(ChatAppSettings.getChatAppLoglevel(), "/createUser", "GET", newUser));
     mainUser.setName(newUser);
     ChatAppSettings.setMainUser(newUser);
     return "redirect:/index/";
@@ -63,10 +67,11 @@ public class ChatController {
 
   @GetMapping("/sendmessage")
   public String sendMessage(@RequestParam("text") String messageText) {
+    System.out.println(new LogEntry(ChatAppSettings.getChatAppLoglevel(), "/sendmessage", "GET", messageText));
     if (!messageText.isEmpty()) {
       messageRepo.save(new Message(mainUser.getName(), messageText));
       sendMessage.setMessage(new Message(mainUser.getName(), messageText));
-      sendMessage.setClient(new Client(ChatAppSettings.getChatAppPeerAddresss()));
+      sendMessage.setClient(new Client(ChatAppSettings.getChatAppUniqueId()));
       RestTemplate restTemplate = new RestTemplate();
       restTemplate.postForObject(ChatAppSettings.getChatAppPeerAddresss(), sendMessage, StatusOK.class);
     }

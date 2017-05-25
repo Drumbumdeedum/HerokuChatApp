@@ -2,13 +2,8 @@ package com.greenfox.chatapp.model;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
-import javax.persistence.*;
 
-@Entity
 public class LogEntry {
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
   private String date = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss.SSS", Locale.ENGLISH).format(new Date());
   private String path, method, logLevel, parameters;
 
@@ -60,14 +55,6 @@ public class LogEntry {
 
   public void setParameters(String parameters) {
     this.parameters = parameters;
-  }
-
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
   }
 
   @Override
