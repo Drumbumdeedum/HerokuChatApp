@@ -3,9 +3,10 @@ package com.greenfox.chatapp;
 public class ChatAppSettings {
   private static final String CHAT_APP_LOGLEVEL = "INFO";
   private static final String CHAT_APP_UNIQUE_ID = "Drumbumdeedum";
-  private static final String CHAT_APP_PEER_ADDRESS = "https://greenfox-chat-app.herokuapp.com/api/message/receive";
+  private static final String CHAT_APP_PEER_ADDRESS = "https://p2p-chat-seed0forever.herokuapp.com/api/message/receive";
   private static String mainUser = "";
 
+  // Marci: "https://p2p-chat-seed0forever.herokuapp.com/api/message/receive"
   // Ramin: "https://greenfox-chat-app.herokuapp.com/api/message/receive"
   // Gabor: "https://limitless-journey-84827.herokuapp.com/api/message/receive"
 
