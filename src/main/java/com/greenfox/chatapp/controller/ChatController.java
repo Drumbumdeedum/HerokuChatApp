@@ -57,6 +57,7 @@ public class ChatController {
   @RequestMapping("/createUser")
   public String addNewUser(String newUser) {
     mainUser.setName(newUser);
+    ChatAppSettings.setMainUser(newUser);
     return "redirect:/index/";
   }
 

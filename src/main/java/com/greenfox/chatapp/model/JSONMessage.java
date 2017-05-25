@@ -31,4 +31,8 @@ public class JSONMessage {
   public void setClient(Client client) {
     this.client = client;
   }
+
+  public String getMessageSenderName() {
+    return this.message.getUsername();
+  }
 }

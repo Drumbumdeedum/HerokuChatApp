@@ -7,7 +7,6 @@ public class MainUser {
   String name;
 
   public MainUser() {
-
   }
 
   public MainUser(String name) {
