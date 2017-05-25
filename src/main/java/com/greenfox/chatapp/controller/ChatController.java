@@ -21,9 +21,11 @@ public class ChatController {
   ChatMessageRepo messageRepo;
 
   @Autowired
-  ReceivedMessage sendMessage;
+  JSONMessage sendMessage;
 
-  RestTemplate restTemplate = new RestTemplate();
+  public MainUser getMainUser() {
+    return mainUser;
+  }
 
   @RequestMapping("/")
   public String redirectToIndex() {
@@ -64,7 +66,8 @@ public class ChatController {
       messageRepo.save(new Message(mainUser.getName(), messageText));
       sendMessage.setMessage(new Message(mainUser.getName(), messageText));
       sendMessage.setClient(new Client(ChatAppSettings.getChatAppPeerAddresss()));
-      StatusOK statusOK = restTemplate.postForObject(ChatAppSettings.getChatAppPeerAddresss(), sendMessage, StatusOK.class);
+      RestTemplate restTemplate = new RestTemplate();
+      restTemplate.postForObject(ChatAppSettings.getChatAppPeerAddresss(), sendMessage, StatusOK.class);
     }
     return "redirect:/index";
   }

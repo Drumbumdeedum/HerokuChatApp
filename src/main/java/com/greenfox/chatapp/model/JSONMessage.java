@@ -3,15 +3,15 @@ package com.greenfox.chatapp.model;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ReceivedMessage {
+public class JSONMessage {
 
   Message message;
   Client client;
 
-  public ReceivedMessage() {
+  public JSONMessage() {
   }
 
-  public ReceivedMessage(Message incomingMessage, Client client) {
+  public JSONMessage(Message incomingMessage, Client client) {
     this.message = incomingMessage;
     this.client = client;
   }
