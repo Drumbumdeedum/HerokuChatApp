@@ -23,7 +23,7 @@
     <div class="container">
       <div class="col-md-5">
         <div class="panel panel-primary">
-          <div style="background-color: cornflowerblue; font-size: 30px; color: white; padding: 5px" class="panel heading">Enter text:</div>
+          <div class="panel heading" style="background-color: cornflowerblue; font-size: 30px; color: white; padding: 5px">Enter text:</div>
           <form action="/sendmessage" style="margin: 5px">
             <div>
               <textarea style="width: 100%" type="text" name="text" rows="3"/>
@@ -36,7 +36,16 @@
       </div>
       <div class="col-md-7">
         <div class="panel panel-primary">
-          <div style="background-color: cornflowerblue; font-size: 30px; color: white; padding: 5px" class="panel heading">Messages</div>
+          <div class="panel heading" style="background-color: cornflowerblue; font-size: 30px; color: white; padding: 5px">
+            <div class="container-fluid">
+              <form action="/index">
+                <span>Messages</span>
+                <button class="btn btn-success" type="submit" style="float: right; margin-top: 4px; margin-bottom: 4px">
+                  <span class="glyphicon glyphicon-refresh"/>
+                </button>
+              </form>
+            </div>
+          </div>
           <div th:each="text : ${messages}">
             <div style="background-color: lightblue; margin: 5px; padding: 5px; border-radius: 8px; width: auto" class="panel-body">
               <div style="font-size: 16px" th:text="${text.getText()}"/>
