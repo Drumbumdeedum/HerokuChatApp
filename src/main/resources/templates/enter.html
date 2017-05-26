@@ -15,7 +15,8 @@
       <div class="col-md-6">
       <h1>User Settings</h1>
       <form action="/createUser">Enter username:
-        <input type="search" name="newUser" required="required" title="Please enter a username"/>
+        <input type="search" name="newUser" autofocus="autofocus" required="required" oninvalid="this.setCustomValidity('Please enter a username')"
+               oninput="setCustomValidity('')"/>
         <input type="submit" value="Enter"/>
       </form>
       </div>

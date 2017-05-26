@@ -26,7 +26,10 @@
           <div class="panel heading" style="background-color: cornflowerblue; font-size: 30px; color: white; padding: 5px">Enter text:</div>
           <form action="/sendmessage" style="margin: 5px">
             <div>
-              <textarea style="width: 100%" type="text" name="text" rows="3" required="required" title="Please enter a message"></textarea>
+              <textarea style="width: 100%" type="text" name="text" rows="3" autofocus="autofocus"
+                        required="required"
+                        oninvalid="this.setCustomValidity('Please enter a message')"
+                        oninput="setCustomValidity('')"/>
             </div>
             <div>
               <button class="btn btn-primary" type="submit">Send</button>
